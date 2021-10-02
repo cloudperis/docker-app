@@ -30,7 +30,7 @@ pipeline {
                       accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                       secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 
-}
+
 
                           
                          sh '''docker login -u AWS https://558908427467.dkr.ecr.us-east-1.amazonaws.com -p $(aws ecr get-login-password --region us-east-1)'''
