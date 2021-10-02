@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     tools {
-        Docker
+        Docker 'docker:latest'
         
     }
 
@@ -10,12 +10,13 @@ pipeline {
 
     stages {
 
-        stage ('Checkout')
+        stage ('Checkout'){
             steps{
 
                 echo "checking out the code"
                 sh "ls"
             }
+        }
 
         
 
