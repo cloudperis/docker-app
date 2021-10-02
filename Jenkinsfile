@@ -30,11 +30,11 @@ pipeline {
                       accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                       secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 
-                          sh "aws s3 ls"
+}
 
                           
-                         
-                          sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 558908427467.dkr.ecr.us-east-1.amazonaws.com"
+                         sh '''docker login -u AWS https://558908427467.dkr.ecr.us-east-1.amazonaws.com -p $(aws ecr get-login-password --region us-east-1)'''
+                          //sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 558908427467.dkr.ecr.us-east-1.amazonaws.com"
                           sh "docker build -t cloudperis ."
                           sh "docker tag cloudperis:latest 558908427467.dkr.ecr.us-east-1.amazonaws.com/cloudperis:latest"
                           sh "docker push 558908427467.dkr.ecr.us-east-1.amazonaws.com/cloudperis:latest"
