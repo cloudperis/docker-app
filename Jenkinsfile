@@ -2,8 +2,8 @@ pipeline {
     agent any
     
     tools {
-        dockerTool 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
-        // docker
+        dockerTool 'docker'
+        // org.jenkinsci.plugins.docker.commons.tools.DockerTool
         
         
     }
@@ -25,7 +25,8 @@ pipeline {
        stage('Build and Push'){
             steps{
                 echo 'deploying application updates....'
-                //sh 'docker build -t cloudperis .'
+                sh 'docker --version'
+                sh 'docker build -t cloudperis .'
 
                 script{
                     docker.withRegistry(
