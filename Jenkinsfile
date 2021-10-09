@@ -22,7 +22,7 @@ pipeline {
 
         
 
-       /*stage('Build and Push'){
+       stage('Build and Push'){
             steps{
                 echo 'deploying application updates....'
 
@@ -38,25 +38,8 @@ pipeline {
                 
 
             }
-        }*/
-
-        stage('another build'){
-            steps{
-                withCredentials([[
-                      $class: 'AmazonWebServicesCredentialsBinding',
-                      credentialsId: "Jenkins-aws",
-                      accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                      secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-
-                          
-                          sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 558908427467.dkr.ecr.us-east-1.amazonaws.com"
-                          sh "docker build -t cloudperis ."
-                          sh "docker tag cloudperis:${BUILD_NUMBER} 558908427467.dkr.ecr.us-east-1.amazonaws.com/cloudperis:${BUILD_NUMBER}"
-                          sh "docker push 558908427467.dkr.ecr.us-east-1.amazonaws.com/cloudperis:${BUILD_NUMBER}"
-
-                      }
-            }
         }
+
 
         
     }
