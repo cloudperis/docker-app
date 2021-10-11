@@ -31,7 +31,7 @@ pipeline {
                         'https://558908427467.dkr.ecr.us-east-1.amazonaws.com/cloudperis',
                         'ecr:us-east-1:Jenkins-aws') {
                         def myImage = docker.build('cloudperis')
-                        myImage.push('${BUILD_NUMBER}')
+                        myImage.push('latest')
                         }
 
                 }
