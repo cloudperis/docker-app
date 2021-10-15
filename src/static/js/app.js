@@ -96,7 +96,7 @@ function AddItemForm({ onNewItem }) {
                     value={newItem}
                     onChange={e => setNewItem(e.target.value)}
                     type="text"
-                    placeholder="Collect Item"
+                    placeholder="Take Item"
                     aria-describedby="basic-addon1"
                 />
                 <InputGroup.Append>
