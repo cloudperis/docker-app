@@ -40,6 +40,24 @@ pipeline {
             }
         }
 
+        stage('Deploy-Dev'){
+            steps{
+                echo 'deploying application updates....'
+                withCredentials([[
+                      $class: 'AmazonWebServicesCredentialsBinding',
+                      credentialsId: "Jenkins-aws",
+                      accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                      secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+
+                          
+                          sh "aws ecs update-service --service my-service --force-new-deployment"
+
+                      }
+
+
+            }
+        }
+
 
         
     }
