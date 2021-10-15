@@ -50,7 +50,7 @@ pipeline {
                       secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 
                           
-                          sh "aws ecs update-service --service my-service --cluster my-cluster --force-new-deployment --region us-east-1"
+                          sh "aws ecs update-service --service cloudperis-service --cluster cloudperis-cluster --force-new-deployment --region us-east-1"
 
                       }
 
